@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio | Cyber Security • GIS • Web Developer</title>
+
+    <meta name="description"
+          content="Portfolio personal Cyber Security, GIS, dan Web Developer.">
+
+    <meta name="keywords"
+          content="Cyber Security, GIS, ArcGIS, Web Developer, Pentest, Portfolio">
+
+    <meta name="author" content="Your">
+
+    <style>
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #050509;
+            --bg2: #0b0b14;
+            --card: rgba(17, 17, 29, 0.72);
+            --purple: #9b5cff;
+            --purple2: #6d28d9;
+            --cyan: #00e5ff;
+            --text: #f5f5f5;
+            --muted: #9999aa;
+            --border: rgba(155, 92, 255, 0.25);
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(109, 40, 217, .18), transparent 25%),
+                radial-gradient(circle at 90% 80%, rgba(0, 229, 255, .10), transparent 25%),
+                var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* =========================
+           LOADER
+        ========================= */
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #050509;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: .7s;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            font-size: 45px;
+            font-weight: 900;
+            color: var(--purple);
+            text-shadow: 0 0 30px var(--purple);
+            animation: pulse 1.5s infinite;
+        }
+
+        .loader-bar {
+            width: 220px;
+            height: 4px;
+            background: #222;
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .loader-bar span {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--purple), var(--cyan));
+            animation: loading 2s forwards;
+        }
+
+        @keyframes loading {
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes pulse {
+            50% {
+                opacity: .4;
+            }
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            background: rgba(5, 5, 9, .65);
+            border-bottom: 1px solid rgba(255,255,255,.05);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--purple);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--purple);
+            text-shadow: 0 0 15px var(--purple);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--cyan);
+            background: rgba(0, 229, 255, .04);
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 85px);
+            line-height: .95;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: var(--purple);
+            text-shadow: 0 0 35px rgba(155,92,255,.5);
+        }
+
+        .typing {
+            color: var(--cyan);
+            font-size: 22px;
+            margin-bottom: 25px;
+            min-height: 30px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 22px;
+            border-radius: 8px;
+            border: 1px solid var(--purple);
+            transition: .3s;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--purple), var(--purple2));
+            box-shadow: 0 0 25px rgba(155,92,255,.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 35px rgba(155,92,255,.6);
+        }
+
+        .btn-outline {
+            color: var(--purple);
+        }
+
+        .btn-outline:hover {
+            background: var(--purple);
+            color: white;
+        }
+
+        /* =========================
+           TERMINAL
+        ========================= */
+
+        .terminal {
+            background: rgba(10,10,18,.9);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow:
+                0 0 50px rgba(109,40,217,.18),
+                inset 0 0 40px rgba(109,40,217,.04);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: .5s;
+        }
+
+        .terminal:hover {
+            transform: perspective(1000px) rotateY(0deg) translateY(-8px);
+        }
+
+        .terminal-head {
+            padding: 12px 15px;
+            background: rgba(255,255,255,.04);
+            display: flex;
+            gap: 7px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #555;
+        }
+
+        .terminal-body {
+            padding: 25px;
+            font-family: monospace;
+            line-height: 2;
+            color: #ddd;
+        }
+
+        .green {
+            color: #55ff99;
+        }
+
+        .purple {
+            color: var(--purple);
+        }
+
+        .cyan {
+            color: var(--cyan);
+        }
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            color: var(--purple);
+            font-size: 14px;
+            letter-spacing: 3px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-top: 10px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            margin-top: 15px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .info-card {
+            padding: 30px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-row span:first-child {
+            color: var(--muted);
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            padding: 30px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            transition: .3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--purple);
+            box-shadow: 0 15px 40px rgba(109,40,217,.15);
+        }
+
+        .skill-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 25px;
+        }
+
+        .project {
+            position: relative;
+            overflow: hidden;
+            padding: 30px;
+            min-height: 280px;
+            background:
+                linear-gradient(145deg, rgba(155,92,255,.08), rgba(0,229,255,.03)),
+                var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            transition: .4s;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            border-color: var(--purple);
+        }
+
+        .project-number {
+            font-size: 12px;
+            color: var(--purple);
+            letter-spacing: 2px;
+        }
+
+        .project h3 {
+            margin: 25px 0 15px;
+            font-size: 23px;
+        }
+
+        .project p {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .tag {
+            padding: 6px 10px;
+            background: rgba(155,92,255,.08);
+            border: 1px solid rgba(155,92,255,.2);
+            border-radius: 5px;
+            font-size: 11px;
+            color: #c9b0ff;
+        }
+
+        /* =========================
+           TIMELINE
+        ========================= */
+
+        .timeline {
+            max-width: 800px;
+            margin: auto;
+            border-left: 2px solid var(--purple);
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--purple);
+            border-radius: 50%;
+            left: -37px;
+            top: 5px;
+            box-shadow: 0 0 15px var(--purple);
+        }
+
+        .timeline-item span {
+            color: var(--cyan);
+            font-size: 13px;
+        }
+
+        .timeline-item h3 {
+            margin: 8px 0;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* =========================
+           CERTIFICATES
+        ========================= */
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .cert {
+            padding: 25px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 15px;
+            transition: .3s;
+        }
+
+        .cert:hover {
+            transform: scale(1.03);
+        }
+
+        .cert-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .cert p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-box {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            padding: 60px 30px;
+            border: 1px solid var(--border);
+            background:
+                radial-gradient(circle at center, rgba(155,92,255,.12), transparent 60%),
+                var(--card);
+            border-radius: 20px;
+        }
+
+        .contact-box h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .social {
+            padding: 10px 18px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: #ccc;
+            transition: .3s;
+        }
+
+        .social:hover {
+            color: var(--purple);
+            border-color: var(--purple);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid rgba(255,255,255,.05);
+        }
+
+        /* =========================
+           SCROLL REVEAL
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 1s;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           CURSOR
+        ========================= */
+
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--purple);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%,-50%);
+            transition: width .2s, height .2s;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 900px) {
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .terminal {
+                transform: none;
+            }
+
+            .skills-grid,
+            .projects,
+            .cert-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 650px) {
+
+            section {
+                padding: 80px 6%;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: rgba(5,5,9,.96);
+                padding: 25px;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .skills-grid,
+            .projects,
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .cursor {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+    <div class="loader-content">
+        <div class="loader-logo">&lt;/&gt;</div>
+        <div class="loader-bar">
+            <span></span>
+        </div>
+    </div>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor"></div>
+
+<!-- NAVBAR -->
+<header>
+    <nav>
+
+        <a href="#home" class="logo">
+            Teddy<span>.K</span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="menu-btn" id="menuBtn">
+            ☰
+        </div>
+
+    </nav>
+</header>
+
+
+<!-- HERO -->
+<section id="home">
+
+    <div class="hero">
+
+        <div class="hero-content reveal">
+
+            <div class="badge">
+                ● AVAILABLE FOR WORK
+            </div>
+
+            <h1>
+                Hello, I'm<br>
+                <span>Teddy Kurniawan</span>
+            </h1>
+
+            <div class="typing">
+                Cyber Security | GIS | Web Developer
+            </div>
+
+            <p>
+                Saya adalah seseorang yang tertarik pada teknologi,
+                cybersecurity, Geographic Information System (GIS),
+                dan pengembangan website modern.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn btn-primary">
+                    View Projects
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- TERMINAL -->
+
+        <div class="terminal reveal">
+
+            <div class="terminal-head">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+
+            <div class="terminal-body">
+
+                <div>
+                    <span class="green">user</span>@portfolio:~$
+                    whoami
+                </div>
+
+                <div class="purple">
+                    → Cyber Security Enthusiast
+                </div>
+
+                <div>
+                    <span class="green">user</span>@portfolio:~$
+                    skills
+                </div>
+
+                <div class="cyan">
+                    → Pentesting<br>
+                    → Web Security<br>
+                    → GIS / ArcGIS<br>
+                    → Web Development
+                </div>
+
+                <div>
+                    <span class="green">user</span>@portfolio:~$
+                    status
+                </div>
+
+                <div class="green">
+                    ✓ System Online
+                </div>
+
+                <br>
+
+                <div class="purple">
+                    ████████████████████ 100%
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+            <span>01 / ABOUT ME</span>
+            <h2>Tentang Saya</h2>
+            <p>Mengenal saya lebih dekat.</p>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-text reveal">
+
+                <p>
+                    Saya memiliki ketertarikan besar terhadap dunia
+                    teknologi, khususnya cybersecurity, GIS,
+                    dan web development.
+                </p>
+
+                <p>
+                    Saya senang mempelajari teknologi baru,
+                    melakukan eksplorasi sistem, membuat website,
+                    serta mengolah data geografis.
+                </p>
+
+                <p>
+                    Portfolio ini berisi beberapa project,
+                    skill, pengalaman, dan teknologi yang saya
+                    pelajari.
+                </p>
+
+            </div>
+
+
+            <div class="info-card reveal">
+
+                <div class="info-row">
+                    <span>Name</span>
+                    <strong>Teddy Kurniawan</strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Location</span>
+                    <strong>Indonesia</strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Focus</span>
+                    <strong>Cyber Security</strong>
+                </div>
+
+                <div class="info-row">
+                    <span>GIS</span>
+                    <strong>ArcGIS / Mapping</strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Availability</span>
+                    <strong class="green">Open for Work</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <span>02 / SKILLS</span>
+
+            <h2>My Skills</h2>
+
+            <p>
+                Teknologi yang saya gunakan dan pelajari.
+            </p>
+
+        </div>
+
+
+        <div class="skills-grid">
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">🛡️</div>
+                <h3>Cyber Security</h3>
+                <p>
+                    Web security, penetration testing,
+                    vulnerability assessment, reconnaissance,
+                    dan security testing.
+                </p>
+            </div>
+
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">🗺️</div>
+                <h3>GIS</h3>
+                <p>
+                    Geographic Information System,
+                    ArcGIS Pro, digitasi, spatial analysis,
+                    mapping dan pengolahan data geografis.
+                </p>
+            </div>
+
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">💻</div>
+                <h3>Web Development</h3>
+                <p>
+                    HTML, CSS, JavaScript, responsive design,
+                    landing page, portfolio dan website modern.
+                </p>
+            </div>
+
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">🐧</div>
+                <h3>Linux</h3>
+                <p>
+                    Kali Linux, Ubuntu, Fedora,
+                    command line, networking dan
+                    security tools.
+                </p>
+            </div>
+
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">🔎</div>
+                <h3>Reconnaissance</h3>
+                <p>
+                    Information gathering,
+                    subdomain enumeration,
+                    endpoint discovery dan asset discovery.
+                </p>
+            </div>
+
+
+            <div class="skill-card reveal">
+                <div class="skill-icon">⚙️</div>
+                <h3>Automation</h3>
+                <p>
+                    Automasi workflow menggunakan
+                    scripting dan berbagai tools
+                    untuk meningkatkan efisiensi.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <span>03 / PROJECTS</span>
+
+            <h2>Featured Projects</h2>
+
+            <p>
+                Beberapa project yang pernah saya kerjakan.
+            </p>
+
+        </div>
+
+
+        <div class="projects">
+
+
+            <div class="project reveal">
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <h3>Cyber Security Lab</h3>
+
+                <p>
+                    Lab untuk mempelajari web security,
+                    vulnerability assessment dan penetration
+                    testing pada sistem yang memiliki izin.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Kali Linux</span>
+                    <span class="tag">Burp Suite</span>
+                    <span class="tag">Nuclei</span>
+                </div>
+
+            </div>
+
+
+            <div class="project reveal">
+
+                <div class="project-number">
+                    PROJECT 02
+                </div>
+
+                <h3>GIS Mapping</h3>
+
+                <p>
+                    Pengolahan dan visualisasi data spasial
+                    menggunakan Geographic Information System
+                    untuk menghasilkan peta informatif.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">ArcGIS Pro</span>
+                    <span class="tag">GIS</span>
+                    <span class="tag">Mapping</span>
+                </div>
+
+            </div>
+
+
+            <div class="project reveal">
+
+                <div class="project-number">
+                    PROJECT 03
+                </div>
+
+                <h3>Modern Portfolio</h3>
+
+                <p>
+                    Website portfolio personal dengan desain
+                    futuristic, responsive layout dan
+                    interactive JavaScript.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                </div>
+
+            </div>
+
+
+            <div class="project reveal">
+
+                <div class="project-number">
+                    PROJECT 04
+                </div>
+
+                <h3>Landing Page</h3>
+
+                <p>
+                    Landing page modern untuk personal branding,
+                    bisnis, jasa freelance dan company profile.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">UI/UX</span>
+                    <span class="tag">SEO</span>
+                    <span class="tag">Responsive</span>
+                </div>
+
+            </div>
+
+
+            <div class="project reveal">
+
+                <div class="project-number">
+                    PROJECT 05
+                </div>
+
+                <h3>Security Automation</h3>
+
+                <p>
+                    Automation workflow untuk membantu proses
+                    reconnaissance dan asset discovery pada
+                    target yang telah mendapatkan izin.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag">Automation</span>
+                </div>
+
+            </div>
+
+
+            <div class="project reveal">
+
+                <div class="project-number">
+                    PROJECT 06
+                </div>
+
+                <h3>Interactive Map</h3>
+
+                <p>
+                    Konsep interactive map untuk menampilkan
+                    informasi lokasi secara visual dan mudah
+                    digunakan.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">GIS</span>
+                    <span class="tag">Map</span>
+                    <span class="tag">Web</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EXPERIENCE -->
+
+<section id="experience">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <span>04 / JOURNEY</span>
+
+            <h2>My Journey</h2>
+
+            <p>
+                Perjalanan belajar dan pengembangan skill.
+            </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+            <div class="timeline-item reveal">
+
+                <span>2020 — PRESENT</span>
+
+                <h3>Cyber Security</h3>
+
+                <p>
+                    Mempelajari penetration testing,
+                    web security, Linux dan security tools.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <span>2022 — PRESENT</span>
+
+                <h3>GIS & Mapping</h3>
+
+                <p>
+                    Mempelajari ArcGIS Pro, digitasi,
+                    spatial data dan pemetaan.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <span>2023 — PRESENT</span>
+
+                <h3>Web Development</h3>
+
+                <p>
+                    Mengembangkan website personal,
+                    landing page dan project web.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CERTIFICATES -->
+
+<section id="certificates">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <span>05 / CERTIFICATES</span>
+
+            <h2>Certificates & Achievements</h2>
+
+            <p>
+                Sertifikat dan pencapaian.
+            </p>
+
+        </div>
+
+
+        <div class="cert-grid">
+
+            <div class="cert reveal">
+
+                <div class="cert-icon">
+                    🏆
+                </div>
+
+                <h3>Cyber Security</h3>
+
+                <p>
+                    Security & Penetration Testing
+                </p>
+
+            </div>
+
+
+            <div class="cert reveal">
+
+                <div class="cert-icon">
+                    🗺️
+                </div>
+
+                <h3>GIS</h3>
+
+                <p>
+                    Geographic Information System
+                </p>
+
+            </div>
+
+
+            <div class="cert reveal">
+
+                <div class="cert-icon">
+                    💻
+                </div>
+
+                <h3>Web Development</h3>
+
+                <p>
+                    HTML, CSS & JavaScript
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="contact-box reveal">
+
+            <span class="cyan">
+                LET'S WORK TOGETHER
+            </span>
+
+            <h2>
+                Punya Project?
+            </h2>
+
+            <p>
+                Jika kamu membutuhkan jasa pembuatan website,
+                GIS, atau membutuhkan bantuan terkait teknologi,
+                jangan ragu untuk menghubungi saya.
+            </p>
+
+            <div class="buttons" style="justify-content:center;">
+
+                <a
+                    href="mailto:kartickaik@email.com"
+                    class="btn btn-primary">
+                    Email Me
+                </a>
+
+                <a
+                    href="https://wa.me/6281243591572"
+                    class="btn btn-outline"
+                    target="_blank">
+                    WhatsApp
+                </a>
+
+            </div>
+
+
+            <div class="socials">
+
+                <a
+                    href="https://github.com/Mrenter666x"
+                    target="_blank"
+                    class="social">
+                    GitHub
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/teddy-kurniawan"
+                    class="social">
+                    LinkedIn
+                </a>
+
+                <a
+                    href="https://www.instagram.com/notesspooky/"
+                    class="social">
+                    Instagram
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © <span id="year"></span>
+    Your Name.
+    All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+    /* =========================
+       LOADER
+    ========================= */
+
+    window.addEventListener("load", () => {
+
+        setTimeout(() => {
+
+            document.getElementById("loader").style.opacity = "0";
+
+            setTimeout(() => {
+                document.getElementById("loader").style.display = "none";
+            }, 700);
+
+        }, 1500);
+
+    });
+
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+
+        navLinks.classList.toggle("active");
+
+    });
+
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            navLinks.classList.remove("active");
+
+        });
+
+    });
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const revealOnScroll = () => {
+
+        reveals.forEach(element => {
+
+            const windowHeight = window.innerHeight;
+
+            const elementTop =
+                element.getBoundingClientRect().top;
+
+            const revealPoint = 120;
+
+            if (elementTop < windowHeight - revealPoint) {
+
+                element.classList.add("active");
+
+            }
+
+        });
+
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+
+    revealOnScroll();
+
+
+    /* =========================
+       CUSTOM CURSOR
+    ========================= */
+
+    const cursor = document.querySelector(".cursor");
+
+    document.addEventListener("mousemove", e => {
+
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+
+    });
+
+
+    /* =========================
+       DYNAMIC YEAR
+    ========================= */
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+
+    /* =========================
+       TYPING EFFECT
+    ========================= */
+
+    const typingElement =
+        document.querySelector(".typing");
+
+    const texts = [
+        "Cyber Security Enthusiast",
+        "GIS & Mapping",
+        "Web Developer",
+        "Technology Enthusiast"
+    ];
+
+    let textIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+
+    function typeEffect() {
+
+        const currentText = texts[textIndex];
+
+        if (!deleting) {
+
+            typingElement.textContent =
+                currentText.substring(0, charIndex + 1);
+
+            charIndex++;
+
+            if (charIndex === currentText.length) {
+
+                deleting = true;
+
+                setTimeout(typeEffect, 1800);
+
+                return;
+
+            }
+
+        } else {
+
+            typingElement.textContent =
+                currentText.substring(0, charIndex - 1);
+
+            charIndex--;
+
+            if (charIndex === 0) {
+
+                deleting = false;
+
+                textIndex =
+                    (textIndex + 1) % texts.length;
+
+            }
+
+        }
+
+        setTimeout(
+            typeEffect,
+            deleting ? 45 : 80
+        );
+
+    }
+
+    typeEffect();
+
+
+    /* =========================
+       HOVER EFFECT
+    ========================= */
+
+    document.querySelectorAll(".project, .skill-card, .cert")
+        .forEach(card => {
+
+            card.addEventListener("mousemove", e => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    e.clientX - rect.left;
+
+                const y =
+                    e.clientY - rect.top;
+
+                card.style.background =
+                    `radial-gradient(circle at ${x}px ${y}px,
+                    rgba(155,92,255,.15),
+                    rgba(17,17,29,.75) 40%)`;
+
+            });
+
+            card.addEventListener("mouseleave", () => {
+
+                card.style.background = "";
+
+            });
+
+        });
+
+</script>
+
+</body>
+</html>
